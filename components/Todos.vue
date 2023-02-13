@@ -1,8 +1,13 @@
 <script setup>
 
+const checked = ref('false')
 
 
-const props = defineProps(['todo',  'checked', 'selected','removecheckedTodos'])
+function toggleChecked() {
+  checked.value = !checked.value
+}
+
+const props = defineProps(['todo', 'removecheckedTodos'])
 </script>
 <template>
    <head>
@@ -12,20 +17,22 @@ const props = defineProps(['todo',  'checked', 'selected','removecheckedTodos'])
           class="flex justify-between border-b border-gray-800 p-2"
           >
             <span class="flex">
-              <label for="checkbox" class="border-none"
-                ><input type="checkbox"  :value="todo.id"  />
-
-                <span v-if="checked==true" class="material-symbols-outlined">
+              <label :for="todo.id" class="border-none"
+                >      
+      
+                <span  v-show="checked" class="material-symbols-outlined   " :class="green">
+circle
+</span>       <span v-show="!checked" class="material-symbols-outlined text-green-800">
 check_circle
 </span>
-                <span v-if="checked==false" class="material-symbols-outlined">
-circle
-</span>
-              </label>
+                </label><input type="checkbox" :id="todo.id"  @click="toggleChecked" :value="todo.id" class="hidden" />
+
+    
+            
 
               {{ todo.title }}</span
             >
-            <button v-if="checked" @click="$emit('removetodo',todo.id)">
+            <button  @click="$emit('removetodo',todo.id)">
                 
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -46,3 +53,4 @@ circle
    
 
 </template>
+

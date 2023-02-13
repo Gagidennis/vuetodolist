@@ -36,25 +36,18 @@ const addTodo = () => {
 };
 
 function removecheckedTodos(id) {
-  todos.value = todos.value.filter((todo) => todo.id !== id);
+  todos.value = todos.value.filter((todo) => todo.id !==id);
 }
-
 
 
 /* const removeTodo=(id)=>{
     todos.value = todos.value.filter((todo) => todo.id !== id)
  }*/
-const checked = ref([]);
 
-const selected = ref(false);
 
-if (selected.value) {
-  checked.value = todos.value.map((todo) => todo.id);
-  console.log(checked.value);
-} else {
-  checked.value = [];
-  console.log(checked.value);
-}
+
+
+
 </script>
 <template>
   <div class="h-screen min-w-max flex flex-col items-center justify-center">
@@ -65,8 +58,8 @@ if (selected.value) {
         <ul>
        <Todos   v-for="todo in todos"
             :key="todo.id"
-          
-             :todo="todo" :checked="checked"  @removetodo="removecheckedTodos" />
+        
+             :todo="todo"   @removetodo="removecheckedTodos" />
         </ul>
       </div>
     </section>

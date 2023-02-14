@@ -1,5 +1,4 @@
 <script setup>
-
 const todos = ref([
   {
     id: 1,
@@ -45,11 +44,14 @@ function removeCheckedTodos(id) {
       <p v-if="errMsg" class="text-red-500">{{ errMsg }}</p>
       <div class="mt-2 border border-b-0 border-gray-800">
         <ul>
-          <Todos v-for="todo in todos" :key="todo.id" :todo="todo" @removeTodo="removeCheckedTodos" />
+          <Todos
+            v-for="todo in todos"
+            :key="todo.id"
+            :todo="todo"
+            @removeTodo="removeCheckedTodos"
+          />
         </ul>
       </div>
     </section>
   </div>
 </template>
-
-

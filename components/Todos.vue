@@ -1,56 +1,51 @@
 <script setup>
-
-const checked = ref('false')
-
+const checked = ref("false");
 
 function toggleChecked() {
-  checked.value = !checked.value
+  checked.value = !checked.value;
 }
 
-const props = defineProps(['todo', 'removecheckedTodos'])
+const props = defineProps(["todo"]);
+defineEmits(["removeTodo"]);
 </script>
 <template>
-   <head>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-   </head>
-          <li
-          class="flex justify-between border-b border-gray-800 p-2"
-          >
-            <span class="flex">
-              <label :for="todo.id" class="border-none"
-                >      
-      
-                <span  v-show="checked" class="material-symbols-outlined   " :class="green">
-circle
-</span>       <span v-show="!checked" class="material-symbols-outlined text-green-800">
-check_circle
-</span>
-                </label><input type="checkbox" :id="todo.id"  @click="toggleChecked" :value="todo.id" class="hidden" />
-
-    
-            
-
-              {{ todo.title }}</span
-            >
-            <button  @click="$emit('removetodo',todo.id)">
-                
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="#df2c14"
-                class="w-6 h-6"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
-                />
-              </svg>
-            </button>
-          </li>
-   
-
+  <Head>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+  </Head>
+  <li class="flex justify-between border-b border-gray-800 p-2">
+    <span class="flex">
+      <label :for="todo.id" class="border-none">
+        <span v-show="checked" class="material-symbols-outlined"> circle </span>
+        <span v-show="!checked" class="material-symbols-outlined text-green-800">
+          check_circle
+        </span> </label
+      ><input
+        type="checkbox"
+        :id="todo.id"
+        @click="toggleChecked"
+        :value="todo.id"
+        class="hidden"
+      />
+      {{ todo.title }}</span
+    >
+    <button @click="$emit('removeTodo', todo.id)">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="#df2c14"
+        class="w-6 h-6"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
+        />
+      </svg>
+    </button>
+  </li>
 </template>
-

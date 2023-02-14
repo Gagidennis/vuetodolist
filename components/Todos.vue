@@ -6,7 +6,7 @@ function toggleChecked() {
 }
 
 const props = defineProps(["todo"]);
-const emit = defineEmits(["removeTodo"]);
+defineEmits(["removeTodo"]);
 </script>
 <template>
   <Head>

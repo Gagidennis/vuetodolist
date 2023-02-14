@@ -1,6 +1,6 @@
 <script setup>
 defineProps(["modelValue"]);
-defineEmits(["update:modelValue"]);
+defineEmits(["update:modelValue", "addTodos"]);
 </script>
 
 <template>
